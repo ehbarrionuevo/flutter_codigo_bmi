@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Image.asset(
               'assets/images/image_bmi.png',
-              height: 180.0,
+              height: 150.0,
             ),
             const Text(
               "Height",
@@ -122,6 +122,17 @@ class _HomePageState extends State<HomePage> {
                 valueWeight = mandarina;
                 setState(() {});
               },
+            ),
+            Container(
+              width: double.infinity,
+              height: 50,
+              margin: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: const Text(
+                  "Calculate",
+                ),
+              ),
             ),
           ],
         ),
