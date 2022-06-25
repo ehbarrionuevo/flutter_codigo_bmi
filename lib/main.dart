@@ -22,7 +22,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  double valueSlider = 160.0;
+  double valueHeight = 182.0;
+  double valueWeight = 76.0;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,7 @@ class _HomePageState extends State<HomePage> {
               'assets/images/image_bmi.png',
               height: 180.0,
             ),
-            Text(
+            const Text(
               "Height",
               style: TextStyle(
                 fontFamily: 'Poppins-Regular',
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Text(
                   // valueSlider.toInt().toString(),
-                  valueSlider.toStringAsFixed(0),
+                  valueHeight.toStringAsFixed(0),
                   style: const TextStyle(
                     fontSize: 28.0,
                     fontFamily: 'Poppins-Regular',
@@ -73,14 +74,52 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             Slider(
-              value: valueSlider,
+              value: valueHeight,
               min: 100.0,
               max: 200.0,
               activeColor: Colors.pinkAccent,
               // label: valueSlider.toInt().toString(),
               // divisions: 10,
               onChanged: (double mandarina) {
-                valueSlider = mandarina;
+                valueHeight = mandarina;
+                setState(() {});
+              },
+            ),
+            const Text(
+              "Weight",
+              style: TextStyle(
+                fontFamily: 'Poppins-Regular',
+                fontSize: 16.0,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.baseline,
+              textBaseline: TextBaseline.alphabetic,
+              children: [
+                Text(
+                  // valueSlider.toInt().toString(),
+                  valueWeight.toStringAsFixed(0),
+                  style: const TextStyle(
+                    fontSize: 28.0,
+                    fontFamily: 'Poppins-Regular',
+                  ),
+                ),
+                const SizedBox(
+                  width: 4.0,
+                ),
+                const Text("cm"),
+              ],
+            ),
+            Slider(
+              value: valueWeight,
+              min: 10.0,
+              max: 150.0,
+              activeColor: Colors.pinkAccent,
+              // label: valueSlider.toInt().toString(),
+              // divisions: 10,
+              onChanged: (double mandarina) {
+                valueWeight = mandarina;
                 setState(() {});
               },
             ),
