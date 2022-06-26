@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
-
 import 'package:flutter_codigo_bmi/bmi_brain.dart';
+import 'package:flutter_codigo_bmi/reto4_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      // home: HomePage(),
+      home: Reto4Page(),
     );
   }
 }
@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
               // divisions: 10,
               onChanged: (double mandarina) {
                 valueHeight = mandarina;
-                mandarinaBrain.height = valueHeight;
+                //mandarinaBrain.height = valueHeight;
                 setState(() {});
               },
             ),
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
               // divisions: 10,
               onChanged: (double mandarina) {
                 valueWeight = mandarina;
-                mandarinaBrain.weight = valueWeight;
+                //mandarinaBrain.weight = valueWeight;
                 setState(() {});
               },
             ),
@@ -135,7 +135,11 @@ class _HomePageState extends State<HomePage> {
               height: 50,
               margin: const EdgeInsets.symmetric(horizontal: 16.0),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  mandarinaBrain.height = valueHeight;
+                  mandarinaBrain.weight = valueWeight;
+                  setState(() {});
+                },
                 child: const Text(
                   "Calcular",
                 ),
