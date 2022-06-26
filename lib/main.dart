@@ -147,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     Text(
-                      "Resultado",
+                      "Resultado:",
                       style: TextStyle(
                         fontSize: 18.0,
                         fontFamily: 'Poppins-Regular',
