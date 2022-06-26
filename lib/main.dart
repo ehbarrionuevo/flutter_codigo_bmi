@@ -24,6 +24,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String result = "Normal";
+  String interpretation = "Todo está bien, sigue así";
   double bmi = 0;
   double valueHeight = 182.0;
   double valueWeight = 76.0;
@@ -136,10 +137,14 @@ class _HomePageState extends State<HomePage> {
 
                   if (bmi < 18.5) {
                     result = "Bajo peso";
+                    interpretation = "Debes de cuidar tu dieta.";
                   } else if (bmi < 25) {
                     result = "Normal";
+                    interpretation = "Todo está bien, sigue así";
                   } else {
                     result = "Sobrepeso";
+                    interpretation =
+                        "Debes de cuidar tu dieta y hacer un poco más de ejercicio.";
                   }
 
                   setState(() {});
@@ -194,10 +199,10 @@ class _HomePageState extends State<HomePage> {
                         fontFamily: 'Poppins-Regular',
                       ),
                     ),
-                    const Text(
-                      "Todo está muy bien, sigue así.",
+                    Text(
+                      interpretation,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14.0,
                         fontFamily: 'Poppins-Regular',
                         color: Colors.black54,
