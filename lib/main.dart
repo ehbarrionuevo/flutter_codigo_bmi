@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:flutter_codigo_bmi/bmi_brain.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -23,6 +25,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  BMIBrain mandarinaBrain = BMIBrain(height: 182, weight: 76);
+
   String result = "Normal";
   String interpretation = "Todo está bien, sigue así";
   double bmi = 0;
@@ -194,7 +198,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Text(
-                      bmi.toStringAsFixed(1),
+                      // bmi.toStringAsFixed(1),
+                      mandarinaBrain.calculateBMI().toStringAsFixed(1),
                       style: const TextStyle(
                         fontSize: 60.0,
                         fontWeight: FontWeight.bold,
