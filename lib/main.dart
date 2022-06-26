@@ -23,6 +23,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String result = "Normal";
   double bmi = 0;
   double valueHeight = 182.0;
   double valueWeight = 76.0;
@@ -132,10 +133,19 @@ class _HomePageState extends State<HomePage> {
               child: ElevatedButton(
                 onPressed: () {
                   bmi = valueWeight / pow((valueHeight / 100), 2);
+
+                  if (bmi < 18.5) {
+                    result = "Bajo peso";
+                  } else if (bmi < 25) {
+                    result = "Normal";
+                  } else {
+                    result = "Sobrepeso";
+                  }
+
                   setState(() {});
                 },
                 child: const Text(
-                  "Calculate",
+                  "Calcular",
                 ),
               ),
             ),
@@ -144,26 +154,61 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: Card(
+                elevation: 12,
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 6.0,
+                ),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Resultado:",
+                    const SizedBox(
+                      width: double.infinity,
+                    ),
+                    const Text(
+                      "Resultado",
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 18.0,
                         fontFamily: 'Poppins-Regular',
                       ),
                     ),
+                    const SizedBox(
+                      height: 4.0,
+                    ),
+                    Text(
+                      result,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 16.0,
+                        fontFamily: 'Poppins-Regular',
+                        color: Colors.pinkAccent,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     Text(
                       bmi.toStringAsFixed(1),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 60.0,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Poppins-Regular',
                       ),
                     ),
+                    const Text(
+                      "Todo está muy bien, sigue así.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        fontFamily: 'Poppins-Regular',
+                        color: Colors.black54,
+                      ),
+                    ),
                   ],
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 16.0,
             ),
           ],
         ),
