@@ -27,27 +27,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   BMIBrain mandarinaBrain = BMIBrain(height: 182, weight: 76);
 
-  String result = "Normal";
-  String interpretation = "Todo está bien, sigue así";
-  double bmi = 0;
   double valueHeight = 182.0;
   double valueWeight = 76.0;
-
-  void _calculateBMI() {
-    bmi = valueWeight / pow((valueHeight / 100), 2);
-    if (bmi < 18.5) {
-      result = "Bajo peso";
-      interpretation = "Debes de cuidar tu dieta.";
-    } else if (bmi < 25) {
-      result = "Normal";
-      interpretation = "Todo está bien, sigue así";
-    } else {
-      result = "Sobrepeso";
-      interpretation =
-          "Debes de cuidar tu dieta y hacer un poco más de ejercicio.";
-    }
-    setState(() {});
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +87,7 @@ class _HomePageState extends State<HomePage> {
               // divisions: 10,
               onChanged: (double mandarina) {
                 valueHeight = mandarina;
+                mandarinaBrain.height = valueHeight;
                 setState(() {});
               },
             ),
@@ -144,6 +126,7 @@ class _HomePageState extends State<HomePage> {
               // divisions: 10,
               onChanged: (double mandarina) {
                 valueWeight = mandarina;
+                mandarinaBrain.weight = valueWeight;
                 setState(() {});
               },
             ),
@@ -152,9 +135,7 @@ class _HomePageState extends State<HomePage> {
               height: 50,
               margin: const EdgeInsets.symmetric(horizontal: 16.0),
               child: ElevatedButton(
-                onPressed: () {
-                  _calculateBMI();
-                },
+                onPressed: () {},
                 child: const Text(
                   "Calcular",
                 ),
@@ -188,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                       height: 4.0,
                     ),
                     Text(
-                      result,
+                      mandarinaBrain.getResult(),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 16.0,
@@ -207,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Text(
-                      interpretation,
+                      mandarinaBrain.getInterpretation(),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 14.0,
