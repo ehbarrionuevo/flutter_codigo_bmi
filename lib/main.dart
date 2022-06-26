@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(MyApp());
@@ -22,6 +23,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  double bmi = 0;
   double valueHeight = 182.0;
   double valueWeight = 76.0;
 
@@ -108,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   width: 4.0,
                 ),
-                const Text("cm"),
+                const Text("kg"),
               ],
             ),
             Slider(
@@ -128,9 +130,38 @@ class _HomePageState extends State<HomePage> {
               height: 50,
               margin: const EdgeInsets.symmetric(horizontal: 16.0),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  bmi = valueWeight / pow((valueHeight / 100), 2);
+                  setState(() {});
+                },
                 child: const Text(
                   "Calculate",
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 12.0,
+            ),
+            Expanded(
+              child: Card(
+                child: Column(
+                  children: [
+                    Text(
+                      "Resultado",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontFamily: 'Poppins-Regular',
+                      ),
+                    ),
+                    Text(
+                      bmi.toStringAsFixed(1),
+                      style: TextStyle(
+                        fontSize: 60.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins-Regular',
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
