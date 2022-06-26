@@ -29,6 +29,22 @@ class _HomePageState extends State<HomePage> {
   double valueHeight = 182.0;
   double valueWeight = 76.0;
 
+  void _calculateBMI() {
+    bmi = valueWeight / pow((valueHeight / 100), 2);
+    if (bmi < 18.5) {
+      result = "Bajo peso";
+      interpretation = "Debes de cuidar tu dieta.";
+    } else if (bmi < 25) {
+      result = "Normal";
+      interpretation = "Todo está bien, sigue así";
+    } else {
+      result = "Sobrepeso";
+      interpretation =
+          "Debes de cuidar tu dieta y hacer un poco más de ejercicio.";
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,28 +149,14 @@ class _HomePageState extends State<HomePage> {
               margin: const EdgeInsets.symmetric(horizontal: 16.0),
               child: ElevatedButton(
                 onPressed: () {
-                  bmi = valueWeight / pow((valueHeight / 100), 2);
-
-                  if (bmi < 18.5) {
-                    result = "Bajo peso";
-                    interpretation = "Debes de cuidar tu dieta.";
-                  } else if (bmi < 25) {
-                    result = "Normal";
-                    interpretation = "Todo está bien, sigue así";
-                  } else {
-                    result = "Sobrepeso";
-                    interpretation =
-                        "Debes de cuidar tu dieta y hacer un poco más de ejercicio.";
-                  }
-
-                  setState(() {});
+                  _calculateBMI();
                 },
                 child: const Text(
                   "Calcular",
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12.0,
             ),
             Expanded(
