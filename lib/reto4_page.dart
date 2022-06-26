@@ -85,7 +85,7 @@ class Reto4Page extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 10.0,
+              height: 12.0,
             ),
             Image.network(
               "https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
